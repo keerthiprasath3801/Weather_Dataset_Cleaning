@@ -1,0 +1,40 @@
+import pandas as pd
+
+data=pd.read_csv(r"C:\Users\SKprasath\OneDrive\Documents\data analysis project\Weather\Weather\Weather")
+
+data
+data.head()
+data.shape #shows no of rows and columns present in the data
+
+data.index #shows the index of the data frame
+data.columns  #shows the name of each column
+data.dtypes #It shows the data type of the each column
+data['Weather'].unique() #it shows the unique value of single column.It can be applied to the single column only
+data['Weather'].nunique() #It shows the no of unique values in a single column
+data.nunique()#Shows the unique value present in all columns 
+data.count() #It shows the total no of non null values in each column
+data['Weather'].value_counts() #It shows the unique values with the count.
+
+data.info()
+data.head()
+data['Wind Speed_km/h'].nunique() #it shows the total count of unique values of wind speed
+data['Wind Speed_km/h'].unique() #it shows the unique values of wind speed
+data.Weather.value_counts()
+
+data[data.Weather =='Clear']#shows the value of the weather where is clear Filtering the data
+data.groupby('Weather').get_group('Clear') # Grouping the data by specific value
+data[data['Wind Speed_km/h']==4] #Show the data where the wind speeds is exactly 4km
+data.isnull().sum()
+data.notnull().sum()
+data.rename(columns={'Weather': 'Weather Condition'},inplace='True')#if we dont use inplace means it will change the name of the column temporarily 
+data.head(2)
+data.Visibility_km.mean()
+data.Press_kPa.std()
+data['Rel Hum_%'].var() #If there is space in the column use []to avoid errors
+data[data['Weather Condition']=='Snow']#display where the weather condition is snow
+data[(data['Wind Speed_km/h'] > 24) & (data['Visibility_km']==25)]
+data.head(2)
+
+data.groupby('Weather Condition').min()
+data.groupby('Weather Condition').max()
+data[data['Weather Condition']=='Fog']
